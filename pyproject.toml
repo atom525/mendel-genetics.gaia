@@ -1,0 +1,19 @@
+[project]
+name = "mendel-genetics-gaia"
+version = "1.0.0"
+description = "Mendel's laws of heredity — a Gaia Lang v5 knowledge package"
+authors = [{name = "Gregor Mendel"}]
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["mendel_genetics*"]
+
+[tool.gaia]
+namespace = "reg"
+type = "knowledge-package"
+uuid = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
