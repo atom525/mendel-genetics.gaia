@@ -1,0 +1,147 @@
+{
+  "ir_hash": "sha256:785915031553a021c4bcc99963e777bf5ec308cdd6b09ae5a6ec1c4419fe510a",
+  "knowledges": [
+    {
+      "content": "Pisum sativum (garden pea) with controlled pollination. Seven traits studied: seed shape, seed colour, pod shape, pod colour, flower colour, flower position, stem height.",
+      "content_hash": "c870b00f7b58b4bb491ec8fc9783df057f427f793f56875346d5e2ff047bf892",
+      "id": "reg:mendel_genetics::pea_model",
+      "label": "pea_model",
+      "parameters": [],
+      "type": "setting"
+    },
+    {
+      "content": "Each individual carries exactly two copies of each heritable factor (one from each parent). Factors are discrete particles, not blends.",
+      "content_hash": "8e8fbbcdb3a0a46ba6a4484acf07bc247d1135723580d7992102706e32747c65",
+      "id": "reg:mendel_genetics::two_allele_model",
+      "label": "two_allele_model",
+      "parameters": [],
+      "type": "setting"
+    },
+    {
+      "content": "F2 offspring of monohybrid crosses show dominant:recessive ratio $\\approx 3{:}1$ across all seven traits studied by Mendel (1866).",
+      "content_hash": "60eb625515b3be806ded64ae3e1775cb12ef3d9fee9a163acc0ac59faade582f",
+      "id": "reg:mendel_genetics::monohybrid_3_1",
+      "label": "monohybrid_3_1",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "F2 offspring of dihybrid crosses show phenotypic ratio $\\approx 9{:}3{:}3{:}1$ for independent trait combinations.",
+      "content_hash": "8faaef920665a25768bae27dcd14dfb44dd407f91876f750c41db825ec50e493",
+      "id": "reg:mendel_genetics::dihybrid_9_3_3_1",
+      "label": "dihybrid_9_3_3_1",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "F1 generation of crosses between true-breeding parents is phenotypically uniform, expressing only the dominant trait.",
+      "content_hash": "0761f71cecb7a33ad00dec8dce7de056aafcb3e770aadd77419f0690ac30e781",
+      "id": "reg:mendel_genetics::f1_uniformity",
+      "label": "f1_uniformity",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Blending inheritance predicts F2 offspring should show intermediate phenotypes with variance decreasing each generation — no discrete 3:1 ratio.",
+      "content_hash": "e3133bc38b377fcff1c9c8ac374f13dc48e6def281dae6619930876b5bfb665e",
+      "id": "reg:mendel_genetics::blending_prediction",
+      "label": "blending_prediction",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "not_both_true(blending_prediction, monohybrid_3_1)",
+      "content_hash": "3fb139d0d1808f86dca8664d88365801acd222fc59018483427fd55e21c46383",
+      "id": "reg:mendel_genetics::blending_vs_mendelian",
+      "label": "blending_vs_mendelian",
+      "metadata": {
+        "helper_kind": "contradiction_result"
+      },
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Law of Segregation: the two alleles for a trait separate during gamete formation so each gamete carries exactly one allele.",
+      "content_hash": "ce016d433fb7ac6cdabaada685e0a4a625455cc91518e629978fe091cedcd3ad",
+      "id": "reg:mendel_genetics::segregation_law",
+      "label": "segregation_law",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Law of Independent Assortment: alleles of different genes assort independently during gamete formation.",
+      "content_hash": "10a4c579baa48483187d876732dd43659f3188faf99c73d734c1863165cd627b",
+      "id": "reg:mendel_genetics::independent_assortment",
+      "label": "independent_assortment",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Hereditary information is encoded in discrete particulate factors (genes) that are transmitted unchanged between generations.",
+      "content_hash": "c1eabf6c4068cdedf7296f40af9f1291074289f355fe860e3a96f3f6a929289c",
+      "id": "reg:mendel_genetics::particulate_inheritance",
+      "label": "particulate_inheritance",
+      "parameters": [],
+      "type": "claim"
+    },
+    {
+      "content": "Do genes on the same chromosome assort independently? Morgan's linkage experiments (1910) show exceptions.",
+      "content_hash": "ec41d002922d14e8be035d5c3e27fd73314aea61e75d6f657d1e55009c6f359f",
+      "id": "reg:mendel_genetics::linkage_question",
+      "label": "linkage_question",
+      "parameters": [],
+      "type": "question"
+    }
+  ],
+  "namespace": "reg",
+  "operators": [
+    {
+      "conclusion": "reg:mendel_genetics::blending_vs_mendelian",
+      "metadata": {
+        "reason": "Blending inheritance cannot produce discrete 3:1 ratios. The observed F2 ratio falsifies blending and supports particulate factors."
+      },
+      "operator": "contradiction",
+      "operator_id": "lco_10d87d4e772b8b62",
+      "scope": "local",
+      "variables": [
+        "reg:mendel_genetics::blending_prediction",
+        "reg:mendel_genetics::monohybrid_3_1"
+      ]
+    }
+  ],
+  "package_name": "mendel_genetics",
+  "scope": "local",
+  "strategies": [
+    {
+      "conclusion": "reg:mendel_genetics::segregation_law",
+      "premises": [
+        "reg:mendel_genetics::monohybrid_3_1",
+        "reg:mendel_genetics::f1_uniformity"
+      ],
+      "scope": "local",
+      "strategy_id": "lcs_83e30c1a4c97b732",
+      "type": "noisy_and"
+    },
+    {
+      "conclusion": "reg:mendel_genetics::independent_assortment",
+      "premises": [
+        "reg:mendel_genetics::dihybrid_9_3_3_1",
+        "reg:mendel_genetics::segregation_law"
+      ],
+      "scope": "local",
+      "strategy_id": "lcs_edd7eb95b2dc524b",
+      "type": "noisy_and"
+    },
+    {
+      "conclusion": "reg:mendel_genetics::particulate_inheritance",
+      "premises": [
+        "reg:mendel_genetics::blending_vs_mendelian",
+        "reg:mendel_genetics::segregation_law",
+        "reg:mendel_genetics::independent_assortment"
+      ],
+      "scope": "local",
+      "strategy_id": "lcs_5c174a5cfb09d6e0",
+      "type": "noisy_and"
+    }
+  ]
+}

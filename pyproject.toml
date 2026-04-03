@@ -12,7 +12,7 @@ include = ["mendel_genetics*"]
 [tool.gaia]
 namespace = "reg"
 type = "knowledge-package"
-uuid = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+uuid = "b13694ea-7460-41df-94c6-4cb1677ff92b"
 
 [build-system]
 requires = ["setuptools>=69.0"]
